@@ -27,7 +27,7 @@ const AddPlayerForm = ({getRoster}) => {
   }
 
   return (
-    <form onSubmit={(event) => {addPlayer(event)}}>
+    <form id='addPlayer' onSubmit={(event) => {addPlayer(event)}}>
       <h2>Add a Player!</h2>
       <div>
         <label htmlFor='name'>Name:</label>
@@ -44,17 +44,23 @@ const AddPlayerForm = ({getRoster}) => {
         />
       </div>
       <div>
-        <p>Status:</p>
-        <input 
-          type='radio' id='field' name='status' value='field'
-          onChange={(event) => {setStatus(event.target.value)}}
-        />
-        <label htmlFor='field'>Field</label>
-        <input 
-          type='radio' id='bench' name='status' value='bench' 
-          onChange={(event) => {setStatus(event.target.value)}}
-        />
-        <label htmlFor='bench'>Bench</label>
+        <p style={{display: 'inline-block', margin: '0', float: 'left'}}>Status:</p>
+        <div style={{display:'inline'}}>
+          <input 
+            type='radio' id='field' name='status' value='field'
+            onChange={(event) => {setStatus(event.target.value)}}
+            style={{float:'none'}}
+          />
+          <label htmlFor='field' style={{float:'none'}}>Field</label>
+        </div>
+        <div style={{display:'inline'}}>
+          <input 
+            type='radio' id='bench' name='status' value='bench' 
+            onChange={(event) => {setStatus(event.target.value)}}
+            style={{float:'none'}}
+          />
+          <label htmlFor='bench' style={{float:'none'}}>Bench</label>
+        </div>
       </div>
       <div>
         <label htmlFor='imageUrl'>Image URL:</label>

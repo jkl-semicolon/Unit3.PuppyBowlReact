@@ -16,12 +16,12 @@
 body {
   margin: 0;
   display: flex;
-  place-items: center;
   min-width: 320px;
   min-height: 100vh;
+  justify-content: center;
 }
 
-#root {
+#rootroot {
   max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
@@ -32,8 +32,13 @@ img {
   max-height: 300px;
 }
 
-a {
+a, form, #title, #singlePlayerContainer {
   border: 3px solid white;
+  box-sizing: border-box;
+}
+
+#rootroot > div, a {
+  min-height: 388px;
 }
 
 button {
@@ -46,8 +51,66 @@ button {
   min-height: 50px;
 }
 
-#root {
+#rootroot {
   display: flex;
   gap: 1rem;
   flex-wrap: wrap;
+  justify-content: center;
+}
+
+#rootroot > div {
+  display: flex;
+  flex-direction:column;
+  gap:5px;
+  height: 387.81px
+}
+
+form {
+  height:100%;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap:5px;
+  padding: 10px;
+}
+
+label {
+  float: left;
+  margin-right: 5px;
+}
+
+input {
+  float: right;
+}
+
+#title {
+  text-align: center;
+  font-size: 3em;
+  display: inline-block;
+  padding: 20px;
+}
+
+#titleContainer {
+  display:flex;
+  justify-content: center;
+}
+
+#singlePlayerContainer > a {
+  min-height: 0;
+}
+
+a > button {
+  margin-bottom: 5px;
+}
+
+button {
+  height: auto;
+  padding: 3px;
+}
+
+#singlePlayerContainer {
+  height: auto !important;
+  padding: 20px;
 }

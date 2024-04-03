@@ -22,10 +22,15 @@ function App() {
 
   return (
     <>
-      <Routes>
-        <Route path='/' element={<AllPlayers getRoster={getRoster} roster={roster}/>}/>
-        <Route path='/playerId/:id' element={<SinglePlayer getRoster={getRoster}/>}/>
-      </Routes>
+      <div id='titleContainer'>
+        <h1 id='title'>🐕🐕🐕 PUPPY BOWL COMMENCES 🐕🐕🐕</h1>
+      </div>
+      <div id='rootroot'>
+        <Routes>
+          <Route path='/' element={<AllPlayers getRoster={getRoster} roster={roster}/>}/>
+          <Route path='/playerId/:id' element={<SinglePlayer getRoster={getRoster}/>}/>
+        </Routes>
+      </div>
     </>
   )
 }

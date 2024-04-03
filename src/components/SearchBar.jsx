@@ -11,7 +11,7 @@ const SearchBar = ({setDisplayRoster, roster}) => {
 
   return (
     <form>
-        <label htmlFor='filter'>Filter:</label>
+        <label style={{fontSize: 'large'}} htmlFor='filter'>Filter:</label>
         <input 
           type='text' placeholder='filter' id='filter' 
           onChange={filtering}
