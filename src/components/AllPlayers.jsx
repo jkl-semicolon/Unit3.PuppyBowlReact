@@ -1,28 +1,22 @@
 import { useState, useEffect } from 'react'
-import { API_URL } from '../App.jsx'
 import IndPlayer from './IndPlayer.jsx';
 import AddPlayerForm from './AddPlayerForm.jsx';
+import SearchBar from './SearchBar.jsx'
 
-export const getRoster = async (setRoster) => {
-  try {
-    const response = await fetch(API_URL + '/players');
-    const json = await response.json();
-    setRoster(json.data.players);
-  } catch (err) {
-    console.log('roster fetch error:', err)
-  }
-}
+const AllPlayers = ({getRoster, roster}) => {
 
-const AllPlayers = () => {
+  const [displayRoster, setDisplayRoster] = useState([]);
 
-  const [roster, setRoster] = useState([]);
-
-  useEffect(() => {getRoster(setRoster)}, []);
+  useEffect(() => {getRoster()}, []);
+  useEffect(() => {setDisplayRoster(roster)}, [roster])
 
   return (
     <>
-      <AddPlayerForm/>
-      {roster.map((player) => {
+      <div>
+        <AddPlayerForm getRoster={getRoster}/>
+        <SearchBar setDisplayRoster={setDisplayRoster} roster={roster}/>
+      </div>
+      {displayRoster.map((player) => {
         return <IndPlayer key={player.id} player={player}/>  
       })}
     </>

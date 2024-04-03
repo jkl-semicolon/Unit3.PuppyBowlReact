@@ -1,10 +1,8 @@
 import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
 
-import { getRoster } from "./AllPlayers.jsx"
 import { API_URL } from "../App"
 
-const AddPlayerForm = () => {
+const AddPlayerForm = ({getRoster}) => {
 
   const [name, setName] = useState('');
   const [breed, setBreed] = useState('');
@@ -22,7 +20,7 @@ const AddPlayerForm = () => {
           name, breed, status, imageUrl, teamId
         })
       })
-      location.reload();
+      await getRoster();
     } catch (err) {
       console.log('error adding new player', err)
     }
@@ -45,7 +43,6 @@ const AddPlayerForm = () => {
           onChange={(event) => {setBreed(event.target.value)}}
         />
       </div>
-      {status}
       <div>
         <p>Status:</p>
         <input 

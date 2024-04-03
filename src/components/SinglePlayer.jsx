@@ -1,10 +1,9 @@
 import { useParams, Link } from "react-router-dom"
 import { useState, useEffect } from 'react'
 
-import { getRoster } from "./AllPlayers.jsx"
 import { API_URL } from "../App.jsx"
 
-const SinglePlayer = () => {
+const SinglePlayer = ({getRoster}) => {
 
   const [chosenPlayer, setChosenPlayer] = useState({});
 
@@ -21,10 +20,13 @@ const SinglePlayer = () => {
     }
   }
 
-  useEffect(() => {getPlayer(); return getRoster}, []);
+  useEffect(() => {getPlayer()}, []);
 
   const deletePlayer = async () => {
-    try {const response = await fetch(API_URL + '/players/' + id, {method: 'DELETE'})}
+    try {
+      await fetch(API_URL + '/players/' + id, {method: 'DELETE'});
+      getRoster();
+    }
     catch (err) {console.log('error deleting player!', err)}
   }
 

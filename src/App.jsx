@@ -8,12 +8,24 @@ export const API_URL = 'https://fsa-puppy-bowl.herokuapp.com/api/2402-FTB-ET-WEB
 
 function App() {
 
+  const [roster, setRoster] = useState([]);
+
+  const getRoster = async () => {
+    try {
+      const response = await fetch(API_URL + '/players');
+      const json = await response.json();
+      setRoster(json.data.players);
+    } catch (err) {
+      console.log('roster fetch error:', err)
+    }
+  }
+
   return (
     <>
-    <Routes>
-      <Route path='/' element={<AllPlayers/>}/>
-      <Route path='/playerId/:id' element={<SinglePlayer/>}/>
-    </Routes>
+      <Routes>
+        <Route path='/' element={<AllPlayers getRoster={getRoster} roster={roster}/>}/>
+        <Route path='/playerId/:id' element={<SinglePlayer getRoster={getRoster}/>}/>
+      </Routes>
     </>
   )
 }
