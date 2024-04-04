@@ -8,12 +8,12 @@ const AddPlayerForm = ({getRoster}) => {
   const [breed, setBreed] = useState('');
   const [status, setStatus] = useState('field');
   const [imageUrl, setImageUrl] = useState('');
-  const [teamId, setTeamId] = useState(57);
+  const [teamId, setTeamId] = useState(null);
 
   const addPlayer = async (event) => {
     event.preventDefault();
     try {
-      const response = await fetch(API_URL + '/players', {
+      await fetch(API_URL + '/players', {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify({
